@@ -2,29 +2,23 @@
 
 namespace App\Livewire\Posts;
 
+use App\Livewire\Forms\PostForm;
 use App\Models\User;
+use Illuminate\View\View;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 class Create extends Component
 {
-    #[Rule(['required', 'string', 'min:3', 'max:255'])]
-    public string $title = '';
-    #[Rule(['required'])]
-    public string $body = '';
+    public PostForm $form;
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.posts.create');
     }
 
-    public function save()
+    public function save(): void
     {
-        $user = User::find(1);
-        $validated = $this->validate();
-
-        $user->posts()->create($validated);
-
-        $this->reset();
+        $this->form->store();
     }
 }
