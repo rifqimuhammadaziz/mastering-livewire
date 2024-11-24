@@ -3,9 +3,7 @@
 namespace App\Livewire\Posts;
 
 use App\Livewire\Forms\PostForm;
-use App\Models\User;
 use Illuminate\View\View;
-use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 class Create extends Component
